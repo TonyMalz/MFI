@@ -72,3 +72,7 @@ primes n | n < 2     = []
          | otherwise = primes (n-1)
 
 
+fromTo :: Int -> Int -> [Int]
+fromTo n m | n < m  = n:(fromTo (n+1) m)
+           | n > m  = n:(fromTo (n-1) m)
+           | n == m = [m]
