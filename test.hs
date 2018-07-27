@@ -76,3 +76,23 @@ fromTo :: Int -> Int -> [Int]
 fromTo n m | n < m  = n:(fromTo (n+1) m)
            | n > m  = n:(fromTo (n-1) m)
            | n == m = [m]
+
+mult :: [Int] -> [Int] -> [Int]
+mult [] a = a
+mult a [] = a
+mult (x:[]) (y:[]) = (x*y):[]
+mult (x:xs) (y:ys) = (x*y):(mult xs ys)
+
+del :: Int -> [Int] -> [Int]
+del a xs | a <= 0    = xs
+         | null xs   = xs
+         | otherwise = del (a-1) (tail xs) 
+
+rev :: [Int] -> [Int]
+rev []     = []
+rev (x:xs) = (rev (xs)) ++ [x]
+
+evenl :: [Int] -> [Int]
+evenl [] = []
+evenl (x:xs) | mod x 2 == 0 = x:evenl xs
+             | otherwise    =   evenl xs
